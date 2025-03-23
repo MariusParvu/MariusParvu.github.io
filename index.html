@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formăm cuvinte cu Alesia</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Formăm cuvinte cu Alesia</h1>
+        <div id="alphabet" class="alphabet">
+            <!-- Letters will be dynamically added here -->
+        </div>
+        <div id="word" class="word" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="buttons">
+            <button id="deleteButton" onclick="deleteLastLetter()">Șterge</button>
+            <button id="resetButton" onclick="resetWord()">Din nou?</button>
+            <button id="speakButton" onclick="speakWord()">Pronunță</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

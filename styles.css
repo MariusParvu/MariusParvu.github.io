@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff; /* Light blue background */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    flex-direction: column;
+    padding-top: 20px;
+    background-image: url('https://www.transparenttextures.com/patterns/type.png'); /* Playful background pattern */
+}
+
+.container {
+    text-align: center;
+    width: 100%;
+}
+
+h1 {
+    font-family: 'Comic Neue', cursive;
+    font-size: 48px;
+    color: #FF6347;
+    text-shadow: 2px 2px #FFA07A;
+}
+
+.alphabet {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.letter {
+    display: inline-block;
+    padding: 3px;
+    margin: 3px;
+    font-size: 48px; /* Increase font size */
+    font-weight: bold;
+    cursor: grab;
+    border-radius: 5px;
+    transition: transform 0.2s;
+    color: white; /* Make text color white */
+    font-family: 'Arial', cursive; /* Use Comic Neue font */
+    -webkit-text-stroke: 1px black; /* Add black outline */
+}
+
+.letter:hover {
+    transform: rotate(10deg) scale(1.1);
+}
+
+.letter:active {
+    transform: scale(1.1);
+}
+
+.word {
+    border: 2px solid #ccc;
+    min-height: 50px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+}
+
+.letter.dragging {
+    opacity: 0.5;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #ff4500;
+}
