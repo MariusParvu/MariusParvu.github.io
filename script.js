@@ -35,30 +35,28 @@ function speakWord() {
     }
 }
 
+// Add this function to handle the click event
+function addLetter(event) {
+    const letter = event.target.cloneNode(true);
+    document.getElementById('word').appendChild(letter);
+    speakWord();
+}
+
+// Update the createAlphabet function to use onclick instead of ondragstart
 function createAlphabet() {
     const alphabetContainer = document.getElementById('alphabet');
     letters.forEach((letter, index) => {
         const div = document.createElement('div');
         div.id = `letter-${index}`;
         div.className = 'letter';
-        div.draggable = true;
-        div.ondragstart = drag;
+        // div.draggable = true; // Remove draggable attribute
+        // div.ondragstart = drag; // Remove drag event
+        div.onclick = addLetter; // Add onclick event
         div.style.color = colors[index % colors.length]; // Set text color to be playful
         div.textContent = letter;
         alphabetContainer.appendChild(div);
     });
 }
 
-function resetWord() {
-    const wordContainer = document.getElementById('word');
-    wordContainer.innerHTML = '';
-}
-
-function deleteLastLetter() {
-    const wordContainer = document.getElementById('word');
-    if (wordContainer.lastChild) {
-        wordContainer.removeChild(wordContainer.lastChild);
-    }
-}
-
+// Call the createAlphabet function to initialize the letters
 createAlphabet();
