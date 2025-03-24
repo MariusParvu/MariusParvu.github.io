@@ -1,3 +1,21 @@
+@keyframes wiggle {
+    0%, 100% {
+        transform: rotate(-3deg);
+    }
+    50% {
+        transform: rotate(3deg);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f8ff; /* Light blue background */
@@ -42,10 +60,12 @@ h1 {
     color: white; /* Make text color white */
     font-family: 'Arial', cursive; /* Use Comic Neue font */
     -webkit-text-stroke: 1px black; /* Add black outline */
+    animation: wiggle 0.5s infinite alternate; /* Add wiggle animation */
 }
 
 .letter:hover {
     transform: rotate(10deg) scale(1.1);
+    animation: rotate 2s linear infinite; /* Add rotate animation on hover */
 }
 
 .letter:active {
