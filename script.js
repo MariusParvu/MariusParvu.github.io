@@ -24,7 +24,7 @@ const letters = [
  
  function speakWord() {
      const word = Array.from(document.getElementById('word').children)
-         .map(letter => letter.textContent)
+         .map(letter => letter.textContent.toLowerCase())
          .join('');
      if (word.length > 1) {
          const utterance = new SpeechSynthesisUtterance(word);
