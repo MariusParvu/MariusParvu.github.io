@@ -42,7 +42,8 @@ const letters = [
          div.id = `letter-${index}`;
          div.className = 'letter';
          div.draggable = true;
-         div.ondragstart = drag;
+         div.ondragstart = drag;          
+         div.onclick = addLetter; // Add onclick event
          div.style.color = colors[index % colors.length]; // Set text color to be playful
          div.textContent = letter;
          alphabetContainer.appendChild(div);
