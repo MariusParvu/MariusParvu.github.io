@@ -22,15 +22,58 @@ function drop(event) {
     speakWord();
 }
 
-async function speakWord() {
-//  const YOUR_API_KEY = "sk_72a7e72db6e465ce560daa0fd6dc179d82f8e81bd133ac1d"; // Replace with your actual IBM API key
+async function speakWordAntonia()  {
+  const YOUR_API_KEY = "sk_72a7e72db6e465ce560daa0fd6dc179d82f8e81bd133ac1d"; // Replace with your actual IBM API key
   const word = Array.from(document.getElementById('word').children)
     .map(letter => letter.textContent.toLowerCase())
     .join('');
 
   if (word.length > 1) {
-/*    try {
-      // 1. First try ElevenLabs API
+    try {
+      const response = await fetch(
+        `https://api.elevenlabs.io/v1/text-to-speech/3z9q8Y7plHbvhDZehEII/stream`, // Romanian-compatible voice ID
+        {
+          method: 'POST',
+          headers: {
+            'xi-api-key': YOUR_API_KEY, // Replace with your actual key
+            'Content-Type': 'application/json',
+            'accept': 'audio/mpeg'
+          },
+          body: JSON.stringify({
+            text: word,
+            model_id: "eleven_multilingual_v2",
+            voice_settings: {
+              language: 'ro',
+              stability: 0.5,
+              similarity_boost: 0.75,
+              style: 0.3,
+              speed: 0.7  // Slower speech (0.5-1.0)
+            }
+          })
+        }
+      );
+
+      if (!response.ok) throw new Error('ElevenLabs API failed');
+      
+      // Create audio from stream
+      const audio = new Audio();
+      audio.src = URL.createObjectURL(await response.blob());
+      audio.play();
+
+    } catch (error) {
+      console.warn("ElevenLabs failed, falling back to Web Speech API");
+    }
+  }
+}
+
+async function speakWordCorina()  {
+  const YOUR_API_KEY = "sk_72a7e72db6e465ce560daa0fd6dc179d82f8e81bd133ac1d"; // Replace with your actual IBM API key
+  const word = Array.from(document.getElementById('word').children)
+    .map(letter => letter.textContent.toLowerCase())
+    .join('');
+
+  if (word.length > 1) {
+    try {
       const response = await fetch(
         `https://api.elevenlabs.io/v1/text-to-speech/gbLy9ep70G3JW53cTzFC/stream`, // Romanian-compatible voice ID
         {
@@ -63,8 +106,17 @@ async function speakWord() {
 
     } catch (error) {
       console.warn("ElevenLabs failed, falling back to Web Speech API");
+    }
+  }
+}
       
-      // 2. Fallback to original Web Speech API */
+
+async function speakWord() {
+  const word = Array.from(document.getElementById('word').children)
+    .map(letter => letter.textContent.toLowerCase())
+    .join('');
+
+  if (word.length > 1) {
       const utterance = new SpeechSynthesisUtterance(word);
       utterance.lang = 'ro-RO';
       utterance.voice = speechSynthesis.getVoices().find(voice => voice.lang === 'ro-RO');
