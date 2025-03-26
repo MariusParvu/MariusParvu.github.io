@@ -19,6 +19,7 @@ function drop(event) {
     const data = event.dataTransfer.getData("text");
     const letter = document.getElementById(data);
     event.target.appendChild(letter.cloneNode(true));
+    speakWord();
 }
 
 async function speakWord() {
@@ -75,7 +76,8 @@ async function speakWord() {
 // Function to handle the click event
 function addLetter(event) {
     const letter = event.target.cloneNode(true);
-    document.getElementById('word').appendChild(letter);
+    document.getElementById('word').appendChild(letter);a
+    speakWord();
 }
 
 // Updated createAlphabet function to support both drag-and-drop and click
