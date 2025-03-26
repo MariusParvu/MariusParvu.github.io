@@ -22,17 +22,18 @@ function drop(event) {
     speakWord();
 }
 
-const speakRomanian = (text) => {
-    const audio = new Audio(`https://translate.google.com/translate_tts?ie=UTF-8&tl=ro&client=tw-ob&q=${encodeURIComponent(text)}`);
-    audio.play();
-};
-
 function speakWord() {
-    const word = Array.from(document.getElementById('word').children)
-        .map(letter => letter.textContent.toLowerCase())
-        .join('');
-        speakRomanian(word);
-}
+      const word = Array.from(document.getElementById('word').children)
+          .map(letter => letter.textContent.toLowerCase())
+          .join('');
+      if (word.length > 1) {
+          const utterance = new SpeechSynthesisUtterance(word);
+          utterance.lang = 'ro-RO'; // Ensure the language is set to Romanian
+          utterance.voice = speechSynthesis.getVoices().find(voice => voice.lang === 'ro-RO');
+          utterance.rate = 0.2; // Make the speech slower
+          speechSynthesis.speak(utterance);
+      }
+  }
 
 // Function to handle the click event
 function addLetter(event) {
