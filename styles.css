@@ -101,10 +101,18 @@ button {
     background-color: #ff6347;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 15px;
     transition: background-color 0.2s;
 }
 
 button:hover {
     background-color: #ff4500;
+}
+
+.buttons {
+    margin-bottom: 10px;
+}
+
+.buttons1 {
+    margin-bottom: 10px;
 }
